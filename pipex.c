@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/06 18:10:24 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/07 16:27:50 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/07 20:48:02 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 	fd[1] = write;
 */
 
-void	start_pipe(char *argv[])
+void	start_pipe(int argc, char *argv[])
 {
-	int			fork_id;
 	static int	fd[2];
-	char 		test[4];
+	int			fork_id;
 
 	pipe(fd);
 	if (pipe(fd) < 0)
@@ -32,21 +31,19 @@ void	start_pipe(char *argv[])
 	if (fork_id == 0)
 	{
 		close(fd[READ]);
-		execve("/bin/cat", argv, 0);
-		write(fd[WRITE], argv[1], 3);
+		child_steps(argc, argv);
 		close(fd[WRITE]);
 	}
 	else
 	{
 		close(fd[WRITE]);
-		read(fd[READ], test, 4);
+		printf("HOI 42\n");
 		close(fd[READ]);
-		printf("READ: %s\n", test);
 	}
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
-	start_pipe(argv);
+	start_pipe(argc, argv);
 	return (0);
 }
