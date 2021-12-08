@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/07 20:19:36 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2021/12/08 14:37:45 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS			=	pipex.c \
 					SRC/libft/ft_strjoin.c \
 					SRC/libft/ft_strlen.c \
 					SRC/libft/ft_strdup.c \
+					SRC/libft/ft_strchr.c \
 					child.c \
 
 
