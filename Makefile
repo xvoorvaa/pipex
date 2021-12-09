@@ -6,12 +6,12 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/08 14:37:45 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2021/12/09 21:39:33 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	pipex
-CFLAGS			=	#-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra
 LEAKS			=	-g3 -fsanitize=address
 OBJS			=	$(SRCS:.c)
 SRCS			=	pipex.c \
@@ -19,6 +19,11 @@ SRCS			=	pipex.c \
 					SRC/libft/ft_strlen.c \
 					SRC/libft/ft_strdup.c \
 					SRC/libft/ft_strchr.c \
+					SRC/libft/ft_bzero.c \
+					SRC/libft/ft_calloc.c \
+					SRC/libft/ft_split.c \
+					SRC/libft/ft_substr.c \
+					SRC/find_dir.c \
 					child.c \
 
 
