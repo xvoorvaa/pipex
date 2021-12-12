@@ -6,11 +6,12 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/06 18:10:24 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/09 21:40:06 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/12 16:39:06 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <errno.h>
 
 /*
 	fd[0] = read;
@@ -45,9 +46,9 @@ void	start_pipe(char *argv[], char *envp[])
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	if (argc < 4)
+	if (argc < 5 || argc > 5)
 	{
-		printf("ERROR\n");
+		perror("Invalid argument");
 		return (-1);
 	}
 	start_pipe(argv, envp);

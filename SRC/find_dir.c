@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/09 16:06:33 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/09 17:26:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/12 16:46:46 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*path_check(char *func, char **path)
 	i = 0;
 	access_ok = -1;
 	path[0] = ft_substr(path[0], 5, ft_strlen(path[0]) - 4);
+	if (ft_strchr(func, ' ') == true)
+		func = *ft_split(func, ' ');
 	while (path[i] != NULL && access_ok != 0)
 	{
 		joined_path = ft_strjoin(path[i], "/");
