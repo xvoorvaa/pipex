@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/12 20:00:55 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2021/12/13 19:17:24 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ REM_MESSAGE		= "$(RED)Removing files...$(NC)"
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):
 	@gcc $(CFLAGS) $(SRCS) -o $(NAME)
 	@printf $(COMP_MESSAGE) $(SRCS)
 	@echo $(MESSAGE)
