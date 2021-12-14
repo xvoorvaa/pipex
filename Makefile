@@ -6,14 +6,15 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/13 19:17:24 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2021/12/14 21:57:58 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	pipex
+NAME_EXE		=	pipex_exe
 CFLAGS			=	-Wall -Werror -Wextra
 LEAKS			=	-g3 -fsanitize=address
-OBJS			=	$(SRCS:.c)
+OBJS			=	$(SRCS:.c=.o)
 SRCS			=	pipex.c \
 					SRC/libft/ft_strjoin.c \
 					SRC/libft/ft_strlen.c \
@@ -39,14 +40,22 @@ REM_MESSAGE		= "$(RED)Removing files...$(NC)"
 
 all:		$(NAME)
 
-$(NAME):
-	@gcc $(CFLAGS) $(SRCS) -o $(NAME)
+$(NAME): $(OBJS)
+	@ar rcs $(NAME_EXE) $(OBJS)
+	@clear
+	@echo $(START)
+	@gcc $(CFLAGS) $(NAME_EXE) -o $(NAME)
 	@printf $(COMP_MESSAGE) $(SRCS)
+	@rm -rf $(OBJS) $(NAME_EXE)
 	@echo $(MESSAGE)
 
 leaks:
-	@gcc $(CFLAGS) $(SRCS) $(LEAKS) -o $(NAME)
+	@ar rcs $(NAME_EXE) $(OBJS)
+	@clear
+	@echo $(START)
+	@gcc $(CFLAGS) $(NAME_EXE) $(LEAKS) -o $(NAME)
 	@printf $(COMP_MESSAGE) $(SRCS)
+	@rm -rf $(OBJS) $(NAME_EXE)
 	@echo $(MESSAGE)
 
 clean:
@@ -57,8 +66,8 @@ clean:
 
 
 fclean:		clean
-	@rm -f $(NAME)
-	@rm -rf $(NAME).dSYM
+	@rm -f push_swap
+	@rm -rf push_swap.dSYM
 
 re:			fclean all
 

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/12 19:58:56 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/13 19:12:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/14 22:03:36 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ void	error_management(int error)
 		perror("Execve() ERROR");
 	else if (error == -5)
 		perror("Dup2 ERROR");
+	else if (error == -6)
+		perror("Path ERROR");
+	else if (error == -7)
+		perror("Env ERROR");
 	exit (error);
 }

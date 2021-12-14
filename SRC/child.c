@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/07 18:29:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/13 19:25:30 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/14 21:56:03 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	read_child(char *argv[], char *envp[], int *fd)
 	int			fd_file;
 	char		**input;
 	char		*usr_func;
-	char		**path_input;
 
 	close(fd[WRITE]);
-	path_input = find_dir(envp);
-	usr_func = path_check(argv[3], path_input);
+	usr_func = path_check(argv[3], find_dir(envp));
+	if (usr_func == NULL)
+		error_management(-6);
 	fd_file = open(argv[4], O_WRONLY | O_CREAT, 0644);
 	input = ft_split(argv[3], ' ');
 	dup2(fd[READ], STDIN_FILENO);
@@ -37,11 +37,11 @@ void	write_child(char *argv[], char *envp[], int *fd)
 	int		fd_file;
 	char	**input;
 	char	*usr_func;
-	char	**path_input;
 
 	close(fd[READ]);
-	path_input = find_dir(envp);
-	usr_func = path_check(argv[2], path_input);
+	usr_func = path_check(argv[2], find_dir(envp));
+	if (usr_func == NULL)
+		error_management(-6);
 	input = ft_split(argv[2], ' ');
 	fd_file = open(argv[1], O_RDONLY);
 	dup2(fd[WRITE], STDOUT_FILENO);
