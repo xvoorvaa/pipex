@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/07 18:29:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/14 21:56:03 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/15 15:17:08 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,23 @@ void	read_child(char *argv[], char *envp[], int *fd)
 	char		**input;
 	char		*usr_func;
 
-	close(fd[WRITE]);
-	usr_func = path_check(argv[3], find_dir(envp));
-	if (usr_func == NULL)
-		error_management(-6);
 	fd_file = open(argv[4], O_WRONLY | O_CREAT, 0644);
+	if (close(fd[WRITE]) < 0 || fd_file < 0)
+		return (perror("unistd.h error"));
+	usr_func = path_check(argv[3], find_dir(envp));
 	input = ft_split(argv[3], ' ');
-	dup2(fd[READ], STDIN_FILENO);
-	dup2(fd_file, STDOUT_FILENO);
-	close(fd[READ]);
-	close(fd_file);
+	if (usr_func == NULL || input == NULL)
+		return (perror("NULL error"));
+	if (dup2(fd[READ], STDIN_FILENO) < 0)
+		return (perror("Dup2() error"));
+	if (dup2(fd_file, STDOUT_FILENO) < 0)
+		return (perror("Dup2() error"));
+	if (close(fd[READ]) < 0)
+		return (perror("Close() error"));
+	if (close(fd_file) < 0)
+		return (perror("Close() error"));
 	execve(usr_func, input, envp);
-	error_management(-4);
+	return (perror("Execve() error"));
 }
 
 void	write_child(char *argv[], char *envp[], int *fd)
@@ -38,16 +43,21 @@ void	write_child(char *argv[], char *envp[], int *fd)
 	char	**input;
 	char	*usr_func;
 
-	close(fd[READ]);
-	usr_func = path_check(argv[2], find_dir(envp));
-	if (usr_func == NULL)
-		error_management(-6);
-	input = ft_split(argv[2], ' ');
 	fd_file = open(argv[1], O_RDONLY);
-	dup2(fd[WRITE], STDOUT_FILENO);
-	dup2(fd_file, STDIN_FILENO);
-	close(fd[WRITE]);
-	close(fd_file);
+	if (close(fd[READ]) < 0 || fd_file < 0)
+		return (perror("unistd.h error"));
+	usr_func = path_check(argv[2], find_dir(envp));
+	input = ft_split(argv[2], ' ');
+	if (usr_func == NULL || input == NULL)
+		return (perror("NULL error"));
+	if (dup2(fd[WRITE], STDOUT_FILENO) < 0)
+		return (perror("Dup2() error"));
+	if (dup2(fd_file, STDIN_FILENO) < 0)
+		return (perror("Dup2() error"));
+	if (close(fd[WRITE]) < 0)
+		return (perror("Close() error"));
+	if (close(fd_file) < 0)
+		return (perror("Close() error"));
 	execve(usr_func, input, envp);
-	error_management(-4);
+	return (perror("Execve() error"));
 }

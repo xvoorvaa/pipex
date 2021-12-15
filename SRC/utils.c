@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   find_dir.c                                         :+:    :+:            */
+/*   utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/09 16:06:33 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/14 22:04:12 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/15 15:13:03 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int		path_row(char *envp[])
+int	path_row(char *envp[])
 {
-	int	i;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (envp[i] != NULL)
 	{
 		if (envp[i][0] == 'P')
-			return (i);
+		{
+			path = ft_substr(envp[i], 0, 4);
+			if (ft_strncmp(path, "PATH", 4) == 0)
+				return (i);
+		}
 		i++;
 	}
 	error_management(-7);
@@ -34,6 +39,8 @@ char	**find_dir(char *envp[])
 
 	i = path_row(envp);
 	path = ft_split(envp[i], ':');
+	if (path == NULL)
+		return (NULL);
 	return (path);
 }
 

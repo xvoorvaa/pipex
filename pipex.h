@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/02 13:55:49 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/13 19:12:10 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2021/12/15 14:37:05 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <errno.h>
+# include <string.h>
 # define READ 0
 # define WRITE 1
 
@@ -44,6 +46,8 @@ void	*ft_calloc(size_t nitems, size_t n);
 char	**ft_split(char const *s, char c);
 
 char	*ft_substr(char const *str, unsigned int start, size_t len);
+
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
 
 /*
 	PIPE'N - ( ͡° ͜ʖ ͡°)

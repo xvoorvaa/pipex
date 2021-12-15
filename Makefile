@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/14 21:57:58 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2021/12/15 15:30:16 by xander        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ SRCS			=	pipex.c \
 					SRC/libft/ft_calloc.c \
 					SRC/libft/ft_split.c \
 					SRC/libft/ft_substr.c \
+					SRC/libft/ft_strncmp.c \
 					SRC/error_management.c \
-					SRC/find_dir.c \
+					SRC/utils.c \
 					SRC/child.c \
 
 
@@ -34,6 +35,7 @@ BLUE			=	\033[1;36m
 RED				=	\033[0;31m
 NC				=	\033[0m # No Color
 
+START			= "$(BLUE)---\nStarting...!\n---$(NC)"
 MESSAGE			= "$(BLUE)---\nCompiling done! Run ./$(NAME)\n---$(NC)"
 COMP_MESSAGE	= "$(GREEN)Building C object... $(NC)%-33.33s\r\n"
 REM_MESSAGE		= "$(RED)Removing files...$(NC)"
@@ -50,10 +52,8 @@ $(NAME): $(OBJS)
 	@echo $(MESSAGE)
 
 leaks:
-	@ar rcs $(NAME_EXE) $(OBJS)
-	@clear
 	@echo $(START)
-	@gcc $(CFLAGS) $(NAME_EXE) $(LEAKS) -o $(NAME)
+	@gcc $(CFLAGS) $(SRCS) $(LEAKS) -o $(NAME)
 	@printf $(COMP_MESSAGE) $(SRCS)
 	@rm -rf $(OBJS) $(NAME_EXE)
 	@echo $(MESSAGE)
