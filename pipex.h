@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/02 13:55:49 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/15 14:37:05 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/21 17:48:08 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	read_child(char *argv[], char *envp[], int *fd);
 void	start_pipe(char *argv[], char *envp[]);
 
 int		main(int argc, char *argv[], char *envp[]);
-
-void	error_management(int error);
 
 /*
 	UTILS

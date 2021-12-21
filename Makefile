@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/21 13:36:05 by xander        ########   odam.nl          #
+#    Updated: 2021/12/21 17:47:51 by xander        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS			=	pipex.c \
 					SRC/libft/ft_split.c \
 					SRC/libft/ft_substr.c \
 					SRC/libft/ft_strncmp.c \
-					SRC/error_management.c \
 					SRC/utils.c \
 					SRC/child.c \
 
