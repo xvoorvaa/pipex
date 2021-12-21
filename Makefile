@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/15 15:30:16 by xander        ########   odam.nl          #
+#    Updated: 2021/12/21 13:36:05 by xander        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ $(NAME): $(OBJS)
 	@echo $(START)
 	@gcc $(CFLAGS) $(NAME_EXE) -o $(NAME)
 	@printf $(COMP_MESSAGE) $(SRCS)
-	@rm -rf $(OBJS) $(NAME_EXE)
 	@echo $(MESSAGE)
 
 leaks:
@@ -66,8 +65,9 @@ clean:
 
 
 fclean:		clean
-	@rm -f push_swap
-	@rm -rf push_swap.dSYM
+	@rm -f $(NAME)
+	@rm -rf $(NAME).dSYM
+	@rm -rf $(NAME_EXE)
 
 re:			fclean all
 

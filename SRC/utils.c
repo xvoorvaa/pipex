@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/09 16:06:33 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/15 15:13:03 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/21 17:38:37 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	path_row(char *envp[])
 		}
 		i++;
 	}
-	error_management(-7);
-	return (-1);
+	perror("ENV error");
+	exit (errno);
 }
 
 char	**find_dir(char *envp[])
