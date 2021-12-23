@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/07 18:29:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/23 15:39:04 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/23 18:41:08 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	read_child(char *argv[], char *envp[], int *fd)
 	char		*usr_func;
 
 	usr_func = path_check(argv[3], find_dir(envp));
-	printf("%s\n", usr_func);
-	printf("%s\n", argv[3]);
 	input = ft_split(argv[3], ' ');
 	if (usr_func == NULL || input == NULL)
 		return (perror("NULL error"));

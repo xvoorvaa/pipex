@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/06 18:10:24 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/23 15:47:02 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/23 18:41:00 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 void	start_pipe(char *argv[], char *envp[])
 {
 	static int	fd[2];
-	pid_t		wait_pid;
 	pid_t		fork_id1;
 	pid_t		fork_id2;
 
@@ -28,27 +27,28 @@ void	start_pipe(char *argv[], char *envp[])
 		return (perror("Pipe() error"));
 	fork_id1 = fork();
 	if (fork_id1 == 0)
+	{
 		write_child(argv, envp, fd);
+		exit(errno);
+	}
 	fork_id2 = fork();
 	if (fork_id2 == 0)
+	{
 		read_child(argv, envp, fd);
+		exit(errno);
+	}
 	if (fork_id1 < 0 || fork_id2 < 0)
 		return (perror("Fork() error"));
-	wait_pid = waitpid(fork_id1, NULL, 0);
-	if (wait_pid == -1)
-		return (perror("Waitpid() error"));
 	if (close(fd[READ]) < 0)
-		return (perror("Close() error"));
+		exit(errno);
 	if (close(fd[WRITE]) < 0)
-		return (perror("Close() error"));
-	if (errno < 0)
 		exit(errno);
 }
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	if (argc < 5 || argc > 5)
-		return (-1);
+		return (EINVAL);
 	start_pipe(argv, envp);
-	return (1);
+	return (errno);
 }
