@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/07 18:29:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/15 15:17:08 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/23 15:39:04 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	read_child(char *argv[], char *envp[], int *fd)
 	char		**input;
 	char		*usr_func;
 
-	fd_file = open(argv[4], O_WRONLY | O_CREAT, 0644);
-	if (close(fd[WRITE]) < 0 || fd_file < 0)
-		return (perror("unistd.h error"));
 	usr_func = path_check(argv[3], find_dir(envp));
+	printf("%s\n", usr_func);
+	printf("%s\n", argv[3]);
 	input = ft_split(argv[3], ' ');
 	if (usr_func == NULL || input == NULL)
 		return (perror("NULL error"));
+	fd_file = open(argv[4], O_WRONLY | O_CREAT, 0644);
+	if (close(fd[WRITE]) < 0 || fd_file < 0)
+		return (perror("unistd.h error"));
 	if (dup2(fd[READ], STDIN_FILENO) < 0)
 		return (perror("Dup2() error"));
 	if (dup2(fd_file, STDOUT_FILENO) < 0)
