@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/02 13:55:49 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/21 17:48:08 by xander        ########   odam.nl         */
+/*   Updated: 2021/12/30 14:45:49 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <string.h>
 # define READ 0
 # define WRITE 1
 
@@ -34,8 +33,6 @@
 size_t	ft_strlen(char const *str);
 
 char	*ft_strjoin(char const *s1, char const *s2);
-
-char	*ft_strdup(const char *str1);
 
 int		ft_strchr(const char *str, int c);
 

@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/15 18:01:23 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2021/12/21 17:47:51 by xander        ########   odam.nl          #
+#    Updated: 2021/12/30 14:45:57 by xander        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ OBJS			=	$(SRCS:.c=.o)
 SRCS			=	pipex.c \
 					SRC/libft/ft_strjoin.c \
 					SRC/libft/ft_strlen.c \
-					SRC/libft/ft_strdup.c \
 					SRC/libft/ft_strchr.c \
 					SRC/libft/ft_bzero.c \
 					SRC/libft/ft_calloc.c \
