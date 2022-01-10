@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/07 18:29:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2021/12/23 18:41:08 by xander        ########   odam.nl         */
+/*   Updated: 2022/01/10 17:34:20 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	read_child(char *argv[], char *envp[], int *fd)
 	input = ft_split(argv[3], ' ');
 	if (usr_func == NULL || input == NULL)
 		return (perror("NULL error"));
-	fd_file = open(argv[4], O_WRONLY | O_CREAT, 0644);
+	fd_file = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (close(fd[WRITE]) < 0 || fd_file < 0)
 		return (perror("unistd.h error"));
 	if (dup2(fd[READ], STDIN_FILENO) < 0)
